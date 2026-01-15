@@ -20,8 +20,6 @@ services:
       - .:/app
     ports:
       - "8000:8000"
-    # Mantém o container ativo para rodarmos scripts manualmente ou subir a API depois
-    command: tail -f /dev/null 
     depends_on:
       - db
     environment:

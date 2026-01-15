@@ -95,6 +95,7 @@ def train_and_evaluate():
     joblib.dump(best_model, 'modelo_final.pkl')
     joblib.dump(encoders, 'encoders.pkl') # Precisamos disso para converter os dados dos novos clientes
     joblib.dump(target_encoder, 'target_encoder.pkl') # Para saber o que é 0, 1, 2 (Good, Standard, Poor)
+    joblib.dump(X.columns.tolist(), 'model_features.pkl') # Salvando a ordem exata das colunas
     print("\nModelo salvo como 'modelo_final.pkl'!")
 
 if __name__ == "__main__":
