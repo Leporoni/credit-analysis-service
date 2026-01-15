@@ -1,0 +1,12 @@
+# Artefatos de IA (Modelos salvos)
+*.pkl
+
+# Python
+__pycache__/
+*.py[cod]
+.env
+venv/
+.pytest_cache/
+
+# Docker
+.postgres_data/
