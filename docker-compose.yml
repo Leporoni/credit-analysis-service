@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: credit_db
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=credit_score_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    container_name: credit_app
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    # Mantém o container ativo para rodarmos scripts manualmente ou subir a API depois
+    command: tail -f /dev/null 
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://admin:admin@db:5432/credit_score_db
+
+volumes:
+  postgres_data:
